@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'  // 추가
+    id 'io.spring.dependency-management' version '1.1.0' // 추가
+}
+
+group = 'me.shinsunyoung'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17' //추가
+
+repositories {
+    mavenCentral()
+}
+
+dependencies { //org.springframework.boot:spring-boot-starter-
+    //testImplementation platform('org.junit:junit-bom:5.10.0')
+    //testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.springframework.boot:spring-boot-starter-web' // 추가
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // 추가
+
+    // 스프링 데이터 JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    runtimeOnly 'com.h2database:h2' // 인메모리 데이터베이스
+    compileOnly 'org.projectlombok:lombok' // 롬복
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 타임리프 . 템플릿 엔진 view
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // 스프링 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    testImplementation 'org.springframework.security:spring-security-test'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // JWT
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1' // 자바 jwt 라이브러리
+    implementation 'javax.xml.bind:jaxb-api:2.3.1' // xml과 객체간 매핑 자동화
+}
+
+test {
+    useJUnitPlatform()
+}
